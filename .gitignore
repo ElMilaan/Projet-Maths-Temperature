@@ -1,4 +1,4 @@
 */lib/
 *.md
 build
-CMakeLists.txt
+*/CMakeLists.txt
