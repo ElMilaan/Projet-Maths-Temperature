@@ -1,2 +1,2 @@
 #include <iostream>
-#include "../headers/scene.hpp"
+#include "headers/scene.hpp"

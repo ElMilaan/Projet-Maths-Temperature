@@ -1,2 +1,2 @@
 #include <iostream>
-#include "../headers/temperature.hpp"
+#include "headers/temperature.hpp"
