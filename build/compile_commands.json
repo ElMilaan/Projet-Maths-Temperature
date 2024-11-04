@@ -1,8 +1,0 @@
-[
-{
-  "directory": "C:/Travail/IMAC/Mathématiques3/Projet-Maths-Temperature/build",
-  "command": "C:\\MinGW\\bin\\g++.exe   -g -Wall -Wextra -Wpedantic -pedantic-errors -Wno-unknown-warning-option -Wno-unused-variable -Wno-comment -o CMakeFiles\\project-temperature.dir\\src\\main.cpp.obj -c C:\\Travail\\IMAC\\Mathématiques3\\Projet-Maths-Temperature\\src\\main.cpp",
-  "file": "C:/Travail/IMAC/Mathématiques3/Projet-Maths-Temperature/src/main.cpp",
-  "output": "CMakeFiles/project-temperature.dir/src/main.cpp.obj"
-}
-]
