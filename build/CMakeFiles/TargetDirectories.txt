@@ -1,3 +1,0 @@
-C:/Travail/IMAC/Mathématiques3/Projet-Maths-Temperature/build/CMakeFiles/project-temperature.dir
-C:/Travail/IMAC/Mathématiques3/Projet-Maths-Temperature/build/CMakeFiles/edit_cache.dir
-C:/Travail/IMAC/Mathématiques3/Projet-Maths-Temperature/build/CMakeFiles/rebuild_cache.dir
