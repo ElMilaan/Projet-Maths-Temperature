@@ -1,2 +1,2 @@
 #include <iostream>
-#include "../headers/fileSC.hpp"
+#include "headers/fileSC.hpp"
