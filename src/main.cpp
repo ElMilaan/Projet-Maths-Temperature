@@ -1,9 +1,17 @@
 #include <iostream>
 #include "headers/temperature.hpp"
+#include "headers/source.hpp"
+#include "headers/init.hpp"
 using namespace std;
 
 int main()
 {
+    Init_info infos{};
+    std::cout << infos;
+    FileSC::readFile(infos);
+    std::cout << infos;
+    Radiateur rad{40};
+    cout << rad.getTemperature();
     Temperature temp;
     int r, g, b;
     float temperature;

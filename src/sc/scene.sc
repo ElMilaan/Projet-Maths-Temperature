@@ -11,9 +11,9 @@ densite 0.1245
 capacite 1004.0
 
 |=== sources ===|
-air 20          /* temperature
-radiateur 2 40  /* nb temperature
-fenetre 1 10    /* nb temperature
+air 0 20          /* id temperature
+radiateur 1 2 40  /* id nb temperature
+fenetre 2 1 10    /* id nb temperature
 
 |=== disposition ===|
 scene 22112220000220000222222

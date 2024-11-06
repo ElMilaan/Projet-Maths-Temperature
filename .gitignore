@@ -1,4 +1,6 @@
 */lib/
 *.md
 build
-*/CMakeLists.txt
+CMakeLists.txt
+*.pdf
+.vscode

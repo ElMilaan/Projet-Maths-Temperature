@@ -1,14 +1,26 @@
 #pragma once
-
 #include <iostream>
+
 class Source
 {
-private:
+protected:
     const double init_temperature{};
     double temperature{};
 
 public:
     Source(double init_temperature);
-    double getTemperature();
-    double setTemperature();
+    virtual double getTemperature() const;
+    virtual void setTemperature(double temperature);
+};
+
+class Radiateur : public Source
+{
+public:
+    Radiateur(double init_temperature);
+};
+
+class Fenetre : public Source
+{
+public:
+    Fenetre(double init_temperature);
 };
