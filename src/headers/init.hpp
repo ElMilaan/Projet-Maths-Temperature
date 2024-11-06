@@ -18,13 +18,16 @@ public:
     unsigned int nb_sources{0};
     std::unordered_map<int, std::pair<int, Source>> sources{};
     std::vector<unsigned int> disposition{};
+
+    void displayDispo();
 };
 
 std::ostream &operator<<(std::ostream &os, Init_info infos);
+void displayDispo(const std::vector<unsigned int> vec, const unsigned int gap);
 
 namespace FileSC
 {
-    const std::string PATH{"src/sc/scene.sc"};
+    const std::string PATH{"../../src/sc/scene.sc"};
 
     void readFile(Init_info &infos);
     void writeFile();

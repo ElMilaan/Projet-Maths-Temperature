@@ -10,6 +10,7 @@ int main()
     std::cout << infos;
     FileSC::readFile(infos);
     std::cout << infos;
+    // infos.displayDispo();
     Radiateur rad{40};
     cout << rad.getTemperature();
     Temperature temp;

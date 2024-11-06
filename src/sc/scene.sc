@@ -16,4 +16,4 @@ radiateur 1 2 40  /* id nb temperature
 fenetre 2 1 10    /* id nb temperature
 
 |=== disposition ===|
-scene 22112220000220000222222
+scene 331133300003300003323323

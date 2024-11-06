@@ -4,19 +4,27 @@
 #include <string>
 #include <sstream>
 
-void displayDispo(const std::vector<unsigned int> vec)
+void Init_info::displayDispo()
 {
-    for (unsigned int i : vec)
+    std::cout << "Disposition : \n\n ";
+    size_t index{0};
+    while (index < disposition.size() - 1 && largeur != 0)
     {
-        std::cout << i;
+        for (int i{0}; i < largeur; i++)
+        {
+            std::cout << disposition[index];
+            index++;
+        }
+        std::cout << "\n ";
     }
+    std::cout << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &os, const std::unordered_map<int, std::pair<int, Source>> map)
 {
     for (const std::pair p : map)
     {
-        os << "( id=" << p.first << " , nb=" << p.second.first << " )" << std::endl;
+        os << "\n ( id=" << p.first << ",nb=" << p.second.first << " )";
     }
     return os;
 }
@@ -24,14 +32,18 @@ std::ostream &operator<<(std::ostream &os, const std::unordered_map<int, std::pa
 std::ostream &operator<<(std::ostream &os, Init_info infos)
 {
     os << std::endl
-       << "Dimension de la scene : (" << infos.largeur << " | " << infos.hauteur << ")" << std::endl
-       << "Pas spatial : " << infos.h << std::endl
-       << "Pas temporel : " << infos.k << std::endl
-       << "Conductivite : " << infos.conductivite << std::endl
-       << "Densite : " << infos.densite << std::endl
-       << "Capacite : " << infos.capacite << std::endl
-       << "Sources (" << infos.nb_sources << ") : " << infos.sources << std::endl
-       << "Disposition : " << infos.disposition.size();
+       << "Dimension de la scene (" << infos.largeur << " / " << infos.hauteur << ")" << std::endl
+       << "Pas spatial (" << infos.h << ")" << std::endl
+       << "Pas temporel (" << infos.k << ")" << std::endl
+       << "Conductivite (" << infos.conductivite << ")" << std::endl
+       << "Densite (" << infos.densite << ")" << std::endl
+       << "Capacite (" << infos.capacite << ")" << std::endl
+       << "Sources (" << infos.nb_sources << ")\n"
+       << infos.sources << "\n\n";
+    if (infos.disposition.size() > 0)
+    {
+        infos.displayDispo();
+    }
 
     return os;
 }
@@ -90,7 +102,7 @@ void FileSC::readFile(Init_info &infos)
                 infos.sources.insert({std::stoi(split_line[1]), {1, std::stoi(split_line[2])}});
                 infos.nb_sources++;
             }
-            else if (my_line._Starts_with("radiateur") || my_line._Starts_with("fenetre") || my_line._Starts_with("scene"))
+            else if (my_line._Starts_with("radiateur") || my_line._Starts_with("fenetre"))
             {
                 infos.sources.insert({std::stoi(split_line[1]), {std::stoi(split_line[2]), std::stoi(split_line[3])}});
                 infos.nb_sources += std::stoi(split_line[2]);
