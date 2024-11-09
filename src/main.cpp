@@ -12,18 +12,17 @@ int main()
     std::cout << infos;
     // infos.displayDispo();
     Radiateur rad{40};
-    cout << rad.getTemperature();
+    cout << rad.getTemperature()<<std::endl;
     Temperature temp;
-    int r, g, b;
     float temperature;
 
     std::cout << "Entrez une température (-10 à 50 °C) : ";
     std::cin >> temperature;
 
-    temp.temperature_To_RGB(temperature, r, g, b);
+    RGB color = temp.temperature_To_RGB(temperature);
 
     std::cout << "Couleur RGB pour " << temperature << " °C : "
-              << "R: " << r << ", G: " << g << ", B: " << b << std::endl;
+              << "R: " << (int)color.R << ", G: " << (int)color.G << ", B: " << (int)color.B << std::endl;
 
     return 0;
 }

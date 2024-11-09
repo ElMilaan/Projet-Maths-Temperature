@@ -27,7 +27,7 @@ void displayDispo(const std::vector<unsigned int> vec, const unsigned int gap);
 
 namespace FileSC
 {
-    const std::string PATH{"../../src/sc/scene.sc"};
+    const std::string PATH{"src/sc/scene.sc"};
 
     void readFile(Init_info &infos);
     void writeFile();
