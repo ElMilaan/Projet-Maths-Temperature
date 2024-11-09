@@ -2,15 +2,7 @@
 #include "headers/temperature.hpp"
 #include <algorithm>
 
-// template<typename T>
-// T clamp(T value, T min, T max) {
-//     if (value < min) return min;
-//     if (value > max) return max;
-//     return value;
-// }
-
-void Temperature::temperature_To_RGB(float temperature, int &r, int &g, int &b)
-{
+void Temperature::temperature_To_RGB(float temperature, int &r, int &g, int &b) {
     // Limiter la température entre -10 et 50 degrés
     temperature = std::clamp(temperature, -10.0f, 50.0f); // Clamp entre -10 et 50 degrés
 
