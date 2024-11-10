@@ -57,12 +57,21 @@ std::vector<std::string> splitString(std::string str)
     return split_line;
 }
 
+bool openFile(std::ifstream &file, const std::string &path1, const std::string &path2)
+{
+    file.open(path1);
+    if (!file.is_open())
+    {
+        file.open(path2);
+    }
+    return file.is_open();
+}
+
 void FileSC::readFile(Init_info &infos)
 {
     std::ifstream my_file;
 
-    my_file.open(PATH);
-    if (my_file.is_open())
+    if (openFile(my_file, FileSC::PATH1, FileSC::PATH2))
     {
         std::string my_line;
         while (getline(my_file, my_line))
