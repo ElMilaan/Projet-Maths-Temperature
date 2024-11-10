@@ -2,6 +2,7 @@
 #include "headers/temperature.hpp"
 #include "headers/source.hpp"
 #include "headers/init.hpp"
+#include "methodes.cpp"
 using namespace std;
 
 int main()
@@ -10,6 +11,16 @@ int main()
     std::cout << infos;
     FileSC::readFile(infos);
     std::cout << infos;
+
+    Init_info infos;
+    FileSC fileSC;
+    fileSC.readFile(infos);
+
+    // Calculer une itération de température
+    calculTemperature(infos);
+
+    infos.displayDispo(); // Affiche la disposition mise à jour après l'itération
+
     // infos.displayDispo();
     Radiateur rad{40};
     cout << rad.getTemperature()<<std::endl;
