@@ -12,10 +12,6 @@ int main()
     FileSC::readFile(infos);
     std::cout << infos;
 
-    Init_info infos;
-    FileSC fileSC;
-    fileSC.readFile(infos);
-
     // Calculer une itération de température
     calculTemperature(infos);
 
@@ -23,7 +19,7 @@ int main()
 
     // infos.displayDispo();
     Radiateur rad{40};
-    cout << rad.getTemperature()<<std::endl;
+    cout << rad.getTemperature() << std::endl;
     Temperature temp;
     float temperature;
 
