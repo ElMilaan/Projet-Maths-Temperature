@@ -79,45 +79,45 @@ void FileSC::readFile(Init_info &infos)
         {
             std::vector<std::string> split_line = splitString(my_line);
 
-            if (my_line.starts_with("largeur"))
+            if (my_line._Starts_with("largeur"))
             {
                 infos.largeur = std::stoi(split_line[1]);
             }
-            else if (my_line.starts_with("hauteur"))
+            else if (my_line._Starts_with("hauteur"))
             {
                 infos.hauteur = std::stoi(split_line[1]);
             }
-            else if (my_line.starts_with("h"))
+            else if (my_line._Starts_with("h"))
             {
                 infos.h = std::stod(split_line[1]);
             }
-            else if (my_line.starts_with("k"))
+            else if (my_line._Starts_with("k"))
             {
                 infos.k = std::stod(split_line[1]);
             }
-            else if (my_line.starts_with("conductivite"))
+            else if (my_line._Starts_with("conductivite"))
             {
                 infos.conductivite = std::stod(split_line[1]);
             }
-            else if (my_line.starts_with("densite"))
+            else if (my_line._Starts_with("densite"))
             {
                 infos.densite = std::stod(split_line[1]);
             }
-            else if (my_line.starts_with("capacite"))
+            else if (my_line._Starts_with("capacite"))
             {
                 infos.capacite = std::stod(split_line[1]);
             }
-            else if (my_line.starts_with("air"))
+            else if (my_line._Starts_with("air"))
             {
                 infos.sources.insert({std::stoi(split_line[1]), {1, std::stoi(split_line[2])}});
                 infos.nb_sources++;
             }
-            else if (my_line.starts_with("radiateur") || my_line.starts_with("fenetre"))
+            else if (my_line._Starts_with("radiateur") || my_line._Starts_with("fenetre"))
             {
                 infos.sources.insert({std::stoi(split_line[1]), {std::stoi(split_line[2]), std::stoi(split_line[3])}});
                 infos.nb_sources += std::stoi(split_line[2]);
             }
-            else if (my_line.starts_with("scene"))
+            else if (my_line._Starts_with("scene"))
             {
                 for (const char c : split_line[1])
                 {
