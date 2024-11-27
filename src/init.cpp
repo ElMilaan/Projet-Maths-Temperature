@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iterator>
 
 void Init_info::displayDispo()
 {
@@ -10,7 +11,7 @@ void Init_info::displayDispo()
     size_t index{0};
     while (index < disposition.size() - 1 && largeur != 0)
     {
-        for (int i{0}; i < largeur; i++)
+        for (unsigned int i{0}; i < largeur; i++)
         {
             std::cout << disposition[index];
             index++;
@@ -22,7 +23,7 @@ void Init_info::displayDispo()
 
 std::ostream &operator<<(std::ostream &os, const std::unordered_map<int, std::pair<int, Source>> map)
 {
-    for (const std::pair p : map)
+    for (std::pair p : map)
     {
         os << "\n ( id=" << p.first << ",nb=" << p.second.first << " )";
     }

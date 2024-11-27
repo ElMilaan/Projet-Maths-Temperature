@@ -1,6 +1,6 @@
 
 |=== dimensions ===|
-largeur 6
+largeur 8
 hauteur 4
 
 |=== valeurs initiales ===|
@@ -16,4 +16,4 @@ radiateur 1 2 40  /* id nb temperature
 fenetre 2 1 10    /* id nb temperature
 
 |=== disposition ===|
-scene 331133300003300003323323
+scene 33133133300000023000000233333333

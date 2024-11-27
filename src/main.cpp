@@ -2,38 +2,33 @@
 #include "headers/temperature.hpp"
 #include "headers/source.hpp"
 #include "headers/init.hpp"
-#include "methodes.cpp"
+#include "headers/app.hpp"
+
 using namespace std;
 
 int main()
 {
-    Init_info infos{};
-    std::cout << infos;
-    FileSC::readFile(infos);
-    std::cout << infos;
+    // Init_info infos{};
+    // std::cout << infos;
+    // FileSC::readFile(infos);
+    // std::cout << infos;
 
-    Init_info infos;
-    FileSC fileSC;
-    fileSC.readFile(infos);
+    // infos.displayDispo(); // Affiche la disposition mise à jour après l'itération
 
-    // Calculer une itération de température
-    calculTemperature(infos);
+    App app{};
 
-    infos.displayDispo(); // Affiche la disposition mise à jour après l'itération
+    // Radiateur rad{40};
+    // cout << rad.getTemperature() << std::endl;
+    // Temperature temp;
+    // float temperature;
 
-    // infos.displayDispo();
-    Radiateur rad{40};
-    cout << rad.getTemperature()<<std::endl;
-    Temperature temp;
-    float temperature;
+    // std::cout << "Entrez une température (-10 à 50 °C) : ";
+    // std::cin >> temperature;
 
-    std::cout << "Entrez une température (-10 à 50 °C) : ";
-    std::cin >> temperature;
+    // RGB color = temp.temperature_To_RGB(temperature);
 
-    RGB color = temp.temperature_To_RGB(temperature);
+    // std::cout << "Couleur RGB pour " << temperature << " °C : "
+    //           << "R: " << (int)color.R << ", G: " << (int)color.G << ", B: " << (int)color.B << std::endl;
 
-    std::cout << "Couleur RGB pour " << temperature << " °C : "
-              << "R: " << (int)color.R << ", G: " << (int)color.G << ", B: " << (int)color.B << std::endl;
-
-    return 0;
+    // return 0;
 }

@@ -17,7 +17,6 @@ public:
     double capacite{0};
     unsigned int nb_sources{0};
     std::unordered_map<int, std::pair<int, Source>> sources{};
-    std::unordered_map<int, std::pair<int, float>> sources;
     std::vector<unsigned int> disposition{};
 
     void displayDispo();
@@ -33,5 +32,4 @@ namespace FileSC
     const std::string PATH2{"../../src/sc/scene.sc"};
 
     void readFile(Init_info &infos);
-    void writeFile();
 };
