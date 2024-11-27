@@ -16,10 +16,6 @@ int main()
     // infos.displayDispo(); // Affiche la disposition mise à jour après l'itération
 
     // infos.displayDispo();
-    Radiateur rad{40};
-    cout << rad.getTemperature() << std::endl;
-    Temperature temp;
-    float temperature;
     App app{};
 
     // Radiateur rad{40};
