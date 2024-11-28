@@ -8,10 +8,3 @@ struct RGB
     unsigned char G{255};
     unsigned char B{255};
 };
-
-class Temperature
-{
-private:
-public:
-    RGB temperature_To_RGB(float temperature);
-};

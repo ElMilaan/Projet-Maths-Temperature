@@ -10,7 +10,6 @@ protected:
 public:
     Source(double init_temperature);
     virtual double getTemperature() const;
-    virtual void setTemperature(double temperature);
     int nb_sources;
 };
 

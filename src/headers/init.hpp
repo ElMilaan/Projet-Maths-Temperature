@@ -23,13 +23,12 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &os, Init_info infos);
-void displayDispo(const std::vector<unsigned int> vec, const unsigned int gap);
 bool openFile(std::ifstream &file, const std::string &path1, const std::string &path2);
 
 namespace FileSC
 {
     const std::string PATH1{"src/sc/scene.sc"};
-    const std::string PATH2{"../../src/sc/scene.sc"};
+    const std::string PATH2{"../src/sc/scene.sc"};
 
     void readFile(Init_info &infos);
 };

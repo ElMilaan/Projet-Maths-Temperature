@@ -11,8 +11,3 @@ double Source::getTemperature() const
 {
     return this->temperature;
 }
-
-void Source::setTemperature(double temperature)
-{
-    this->temperature = temperature;
-}

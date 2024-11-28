@@ -19,8 +19,8 @@ void App::setup()
     densite = infos.densite;
     capacite = infos.capacite;
     scene = infos.disposition;
-    temperatures.resize(scene.size());
-    couleurs.resize(scene.size() * RATIO * RATIO);
+    temperatures = std::vector<double>(scene.size());
+    couleurs = std::vector<RGB>(scene.size() * 32 * 32);
 }
 
 void App::update()
@@ -28,9 +28,6 @@ void App::update()
     unsigned int cpt_file{0};
     calculTemperature();
     convert_all_temp_into_rgb();
-    std::string file_name = "map_" + std::to_string(cpt_file) + ".ppm";
-    std::string file_path = "src/ppm/" + file_name;
-    writePPM(file_name, file_path);
 }
 
 void App::calculTemperature()
@@ -39,30 +36,27 @@ void App::calculTemperature()
     float coeff = alpha * k / (h * h);
 
     // Boucle sur chaque point de la grille
-    for (int i = 0; i < hauteur; ++i)
+    for (unsigned int i = 0; i < hauteur; i++)
     {
-        for (int j = 0; j < largeur; ++j)
+        for (unsigned int j = 0; j < largeur; j++)
         {
             int index = i * largeur + j;
 
-            // Vérification si le point est une source (radiateur ou fenêtre)
-            if (sources.count(scene[index]) > 0)
+            if (sources.count(scene[index]) > 0) // Vérification si le point est une source (radiateur ou fenêtre)
             {
-                // Si c'est une source, on laisse la température fixe
-                auto source = sources.at(scene[index]);
-                temperatures[index] = static_cast<float>(source.second.getTemperature());
-            } // La température de la source
+                auto source = sources.at(scene[index]); // Si c'est une source, on laisse la température fixe
+                temperatures[index] = source.second.getTemperature();
+            }
             else
             {
                 float sumNeighbors = 0.0f;
                 int neighborCount = 0;
 
-                // Cas des bords : on suppose que la température du mur est la même que celle du point voisin
-                for (int di = -1; di <= 1; di += 2)
-                { // Parcourt les voisins haut (di=-1) et bas (di=+1)
-                    if (i + di < 0 || i + di >= hauteur)
-                    { // Si le point est sur le bord, on prend la température du point voisin
-                        sumNeighbors += scene[index];
+                for (int di = -1; di <= 1; di += 2) // On suppose que la température du mur est la même que celle du point voisin
+                {
+                    if (i + di < 0 || i + di >= hauteur) // Parcourt les voisins haut (di=-1) et bas (di=+1)
+                    {
+                        sumNeighbors += scene[index]; // Si le point est sur le bord, on prend la température du point voisin
                     }
                     else
                     {
@@ -72,10 +66,10 @@ void App::calculTemperature()
                 }
 
                 for (int dj = -1; dj <= 1; dj += 2)
-                { // Parcourt les voisins gauche (dj=-1) et droit (dj=+1)
+                {
                     if (j + dj < 0 || j + dj >= largeur)
-                    { // Si le point est sur le bord, on prend la température du point voisin
-                        sumNeighbors += scene[index];
+                    {
+                        sumNeighbors += scene[index]; // Si le point est sur le bord, on prend la température du point voisin
                     }
                     else
                     {
@@ -141,7 +135,7 @@ void App::convert_all_temp_into_rgb()
     size_t index{0};
     for (size_t i{0}; i < temperatures.size(); i++)
     {
-        for (int j{0}; j < RATIO; j++)
+        for (unsigned int j{0}; j < RATIO; j++)
         {
             couleurs[index] = temperature_To_RGB(temperatures[i]);
             index++;
@@ -152,23 +146,24 @@ void App::convert_all_temp_into_rgb()
 void App::writePPM(const std::string file_name, const std::string file_path)
 {
     // Ouvrir le fichier en mode écriture
-    std::ofstream ppmFile(file_name);
+    std::ofstream ppmFile(file_path, std::ios::binary);
     if (!ppmFile)
     {
         std::cerr << "Erreur : Impossible d'ouvrir le fichier " << file_name << std::endl;
         return;
     }
 
-    ppmFile << "P3\n";
-    ppmFile << largeur << " " << hauteur << "\n";
+    ppmFile << "P6\n";
+    ppmFile << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n";
     ppmFile << "255\n";
 
     for (RGB couleur : couleurs)
     {
         ppmFile << couleur.R << " " << couleur.G << " " << couleur.B << "\n";
     }
+    std::cout << std::endl;
 
     // Fermer le fichier
     ppmFile.close();
-    std::cout << "Fichier PPM écrit avec succès dans : " << file_path << std::endl;
+    std::cout << "Fichier PPM ecrit avec succes dans : " << file_path << std::endl;
 }
